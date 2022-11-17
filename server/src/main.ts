@@ -1,11 +1,11 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import helmet from 'helmet';
-
 import { connectToDatabase, disconnectFromDatabase } from './utils/database';
 import logger from './utils/logger';
 import { CORS_ORIGIN } from './constants';
+import helmet from 'helmet';
+import userRoute from "./modules/user/user.route"
 
 const PORT = process.env.PORT || 4000;
 
@@ -20,6 +20,8 @@ app.use(
   })
 );
 app.use(helmet())
+
+app.use('/api/users', userRoute);
 
 
 
