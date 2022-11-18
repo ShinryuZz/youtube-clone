@@ -1,11 +1,17 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { RegisterUserBody } from "./user.schema";
 import { createUesr } from "./user.service";
 
 
-export async function registerUserHandler(req: Request, res: Response){
+export async function registerUserHandler(
+  req: Request<{}, {}, RegisterUserBody>,
+  res: Response
+){
 
   const {username, email, password} = req.body;
+
+  req.body.email;
 
   console.log(req.body);
 
