@@ -8,7 +8,7 @@ function omit<T>(obj: T, property: keyof T | (keyof T)[]){
 
     return Object.fromEntries(entries);
   }
-  const {[property], unused, ...rest} = obj;
+  const {[property]: unused, ...rest} = obj;
 
   return rest
 }
