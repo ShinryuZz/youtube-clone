@@ -1,19 +1,20 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || 'changeme'
-const EXPOPIRES_IN = process.env.EXPIRES_IN || "7d"
+const JWT_SECRET = process.env.JWT_SECRET || "changeme";
+const EXPIRES_IN = process.env.EXPIRES_IN || "7d";
 
-export function signJwt(payload: string | Buffer | Object){
+export function signJwt(payload: string | Buffer | object) {
   return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: EXPOPIRES_IN,
+    expiresIn: EXPIRES_IN,
   });
 }
 
+export function verifyJwt(token: string) {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
 
-export function verifyJwt(token: string){
-  try{
-    const decodes = jwt.verify(token, JWT_SECRET);
-  }catch(e){
-    return null
+    return decoded;
+  } catch (e) {
+    return null;
   }
 }

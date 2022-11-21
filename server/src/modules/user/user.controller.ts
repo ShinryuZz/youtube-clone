@@ -11,10 +11,6 @@ export async function registerUserHandler(
 
   const {username, email, password} = req.body;
 
-  req.body.email;
-
-  console.log(req.body);
-
   try {
     await createUesr({username, email, password})
 
