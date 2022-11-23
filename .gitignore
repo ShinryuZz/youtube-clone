@@ -1,3 +1,7 @@
+#server
 /server/yarn-error.log
 /server/videos/
 /server/node_modules/
+
+#client
+/client/node_modules/
