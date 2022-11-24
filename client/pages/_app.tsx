@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/globals.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
@@ -6,7 +7,7 @@ import { MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
-// import { MeContextProvider } from "../context/me";
+import { MeContextProvider } from "../context/me";
 
 const queryClient = new QueryClient();
 
@@ -44,13 +45,13 @@ export default function App(props: AppPropsWithLayout) {
       >
         <NotificationsProvider>
           <QueryClientProvider client={queryClient}>
-            {/* <MeContextProvider> */}
-            {getLayout(
-              <main>
-                <Component {...pageProps} />
-              </main>
-            )}
-            {/* </MeContextProvider> */}
+            <MeContextProvider>
+              {getLayout(
+                <main>
+                  <Component {...pageProps} />
+                </main>
+              )}
+            </MeContextProvider>
           </QueryClientProvider>
         </NotificationsProvider>
       </MantineProvider>

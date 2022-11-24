@@ -14,7 +14,7 @@ import { AxiosError } from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useMutation } from "react-query";
-import { registerUser } from "../api";
+import { registerUser } from "../../api";
 
 function RegisterPage() {
   const router = useRouter();
