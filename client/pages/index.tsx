@@ -1,12 +1,23 @@
+import { SimpleGrid } from "@mantine/core";
 import React from "react";
 import { ReactElement } from "react";
+import VideoTeaser from "../components/VideoTeaser";
 import { useVideo } from "../context/videos";
 import HomePageLayout from "../layout/Home";
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
   const { videos } = useVideo();
-  return <div className={styles.container}>{JSON.stringify(videos)}</div>;
+  return (
+    <div className={styles.container}>
+      <SimpleGrid cols={3}>
+        {(videos || []).map((video) => {
+          return <VideoTeaser key={video.videoId} video={video} />;
+        })}
+      </SimpleGrid>
+      {/* {JSON.stringify(videos)} */}
+    </div>
+  );
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
