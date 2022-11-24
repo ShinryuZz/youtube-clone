@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import UploadVideo from "../components/UploadVideo";
 import { useMe } from "../context/me";
+import { VideoContextProvider } from "../context/videos";
 
 function HomePageLayout({ children }: { children: React.ReactNode }) {
   const { user, refetch } = useMe();
@@ -11,7 +12,7 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
     <AppShell
       padding="md"
       navbar={
-        <Navbar width={{ base: 10 }} height={500} p="xs">
+        <Navbar width={{ base: 100 }} height={500} p="xs">
           Side items
         </Navbar>
       }
@@ -42,7 +43,7 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
         </Header>
       }
     >
-      {children}
+      <VideoContextProvider>{children}</VideoContextProvider>
     </AppShell>
   );
 }
